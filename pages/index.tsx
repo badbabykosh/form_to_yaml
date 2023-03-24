@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import Link from 'next/link'
 
 import { useState } from 'react';
 
@@ -64,34 +65,42 @@ export default function Home() {
     };
 
     return (
-        <div className={styles.flex_center}>
-            <div className="">
-                <pre>{collectionsYaml + yamlOutput}</pre>
+        <div className={styles.flex_container_column}>
+            <div id="main" className={styles.center_text}>
+                <Link className={styles.mylink} href="/upload">
+                    Click here to Upload a CSV file or just enter in the entrie one at a time in the fomr below...
+                </Link>
             </div>
-            <div className="">
-                <form className={styles.main} onSubmit={handleSubmit}>
-                    <label>
-                        Franchise:
-                        <input type="text" name="franchise" value={formData.franchise} onChange={handleChange} />
-                    </label>
-                    <label>
-                        List URL:
-                        <input type="url" name="list" value={formData.list} onChange={handleChange} />
-                    </label>
-                    <label>
-                        Background URL:
-                        <input type="url" name="background" value={formData.background} onChange={handleChange} />
-                    </label>
-                    <label>
-                        Poster URL:
-                        <input type="url" name="poster" value={formData.poster} onChange={handleChange} />
-                    </label>
-                    <label>
-                        Summary:
-                        <textarea name="summary" value={formData.summary} onChange={handleChange} />
-                    </label>
-                    <button type="submit">Submit</button>
-                </form>
+            <div className={styles.flex_row}>
+                <div className="">
+                    <pre>{collectionsYaml + yamlOutput}</pre>
+                </div>
+                <div className="">
+                    <form className={styles.form_column} onSubmit={handleSubmit}>
+                        <label>
+                            Franchise:
+                            <input type="text" name="franchise" value={formData.franchise} onChange={handleChange} />
+                        </label>
+                        <label>
+                            List URL:
+                            <input type="url" name="list" value={formData.list} onChange={handleChange} />
+                        </label>
+                        <label>
+                            Background URL:
+                            <input type="url" name="background" value={formData.background} onChange={handleChange} />
+                        </label>
+                        <label>
+                            Poster URL:
+                            <input type="url" name="poster" value={formData.poster} onChange={handleChange} />
+                        </label>
+                        <label>
+                            Summary:
+                            <textarea name="summary" value={formData.summary} onChange={handleChange} />
+                        </label>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+
             </div>
         </div>
     );
